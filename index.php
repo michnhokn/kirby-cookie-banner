@@ -1,6 +1,7 @@
 <?php
 
 @include_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/lib/CookieMethods.php';
 
 Kirby::plugin('michnhokn/cookie-banner', [
     'snippets' => [
@@ -14,8 +15,6 @@ Kirby::plugin('michnhokn/cookie-banner', [
             'acceptAll' => 'Alle annehmen',
             'save' => 'Einstellung speichern',
         ],
-        'cookies' => [
-            'analytics' => 'Analytics',
-        ]
+        'features' => []
     ]
 ]);

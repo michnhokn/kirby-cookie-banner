@@ -5,7 +5,7 @@
 
 ## Commercial Usage
 
-This plugin is free but if you use it in a commercial project please consider to 
+This plugin is free but if you use it in a commercial project please consider to
 - [buy me a 🍺](https://buymeacoff.ee/michnhokn)
 
 ## Installation
@@ -36,12 +36,21 @@ Every event contains a comma separated string of selected options.
 | `content.denyAll` | button text of _deny all_ button |
 | `content.acceptAll` | button text of _acceppt all_ button |
 | `content.save` | button text of _save_ button |
-| `cookies` | `array` of available cookie options. **default**: `['analytics' => 'Analytics']` | 
+| `features` | `array` of available cookie options. **default**: `['analytics' => 'Analytics']` |
 
+
+## Methods
+- `isFeatureAllowed(string $featureName)` Checks if a user allowed given feature
+```php
+<?php if (isFeatureAllowed('analytics')): ?>
+    <h1>Analytics allowed</h1>
+<?php endif; ?>
+```
+- `getAllowedFeatures()` Get all allowed features or false if nothing is selected
+- `clearAllowedFeatures()` Clear all allowed features
 
 ## Roadmap
 
-- PHP functions
 - Translation
 - Better custom theme
 - Better Wiki

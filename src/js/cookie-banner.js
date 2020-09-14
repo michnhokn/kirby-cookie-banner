@@ -107,7 +107,7 @@ class CookieBanner {
   }
 
   triggerEvent(name, data) {
-    let _this = this, event = new CustomEvent(name, {detail: data});
+    let _this = this, event = new CustomEvent(name, {options: data});
     document.querySelector('body').dispatchEvent(event);
   }
 

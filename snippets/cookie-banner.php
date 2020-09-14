@@ -9,7 +9,7 @@
                     <input type="checkbox" checked disabled>
                     <span>Essentiell</span>
                 </label>
-                <?php foreach (option('michnhokn.cookie-banner.cookies') as $key => $cookie): ?>
+                <?php foreach (option('michnhokn.cookie-banner.features') as $key => $cookie): ?>
                     <label class="cookie-banner__option" data-cookie-id="<?= h($key) ?>">
                         <input type="checkbox">
                         <span><?= h($cookie) ?></span>
