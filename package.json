@@ -4,7 +4,7 @@
   "description": "",
   "author": "Michael Scheurich <contact@michaelscheurich.dev>",
   "scripts": {
-    "start": "parcel watch src/js/cookie-banner.js -d ./assets --public-url ./ --no-hmr",
+    "dev": "parcel watch src/js/cookie-banner.js -d ./assets --public-url ./ --no-hmr",
     "build": "parcel build src/js/cookie-banner.js -d ./assets --public-url ./ --no-source-maps --no-content-hash"
   },
   "devDependencies": {

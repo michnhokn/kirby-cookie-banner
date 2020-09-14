@@ -1,31 +1,31 @@
 {
-  "name": "michnhokn/kirby3-cookie-banner",
-  "type": "kirby-plugin",
-  "description": "Add cookie banner to your Kirby website",
-  "version": "0.9.0",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Michael Scheurich",
-      "email": "contact@michaelscheurich.dev"
+    "name": "michnhokn/kirby3-cookie-banner",
+    "description": "Add cookie banner to your Kirby website",
+    "type": "kirby-plugin",
+    "version": "0.9.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Scheurich",
+            "email": "support@michaelscheurich.dev"
+        }
+    ],
+    "keywords": [
+        "kirby3",
+        "kirby3-cms",
+        "kirby3-plugin",
+        "cookies",
+        "cookie-banner"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Michnhokn\\": "lib/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "require": {
+        "getkirby/composer-installer": "^1.1"
     }
-  ],
-  "keywords": [
-    "kirby3",
-    "kirby3-cms",
-    "kirby3-plugin",
-    "cookies",
-    "cookie-banner"
-  ],
-  "autoload": {
-    "psr-4": {
-      "Michnhokn\\": "lib/"
-    }
-  },
-  "config": {
-    "optimize-autoloader": true
-  },
-  "require": {
-    "getkirby/composer-installer": "^1.1"
-  }
 }
