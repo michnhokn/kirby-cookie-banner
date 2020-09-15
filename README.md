@@ -15,25 +15,18 @@ This plugin is free but if you use it in a commercial project please consider to
 - `composer require michnhokn/kirby3-cookie-banner`
 
 ## Features
-- Add custom options to cookie banner
+- Add custom features to cookie modal
 - You can fully translate the cookie banner ([Custom language variables](https://getkirby.com/docs/guide/languages/custom-language-variables))
-- Check the state of the cookie banner via JavaScript events
-- Check in code for allowed features
+- Intercept cookie status via JavaScript event
+- PHP functions to check for allowed features
+- Trigger JavaScript event to update Cookie Modal
 
 ## Setup
-To setup the cookie banner just put the `cookie-banner` snippet right befor your closing body tag. Thats it. 🎉
+To setup the cookie banner just put the `cookie-modal` snippet right befor your closing body tag. Thats it. 🎉
 ``` php
-<?php snippet('cookie-banner') ?>
+<?php snippet('cookie-modal') ?>
 ```
-If a selection is made in the cookie modal, a corresponding event is fired on `<body>`.
-
-| Event | Reason |
-|---|---|
-| `cookies:all` | all cookies are accepted |
-| `cookies:deny` | only essential cookies are accepted |
-| `cookies:custom` | some cookies are accepted |
-
-Every event contains a comma separated string of selected options.
+If a selection is made an event called `cookies:saved` is triggerd on `<body>`. The included data contains an array of allowed features.
 You can set these up in your `config.php` file under `site/config/`.
 ````php
 return [
@@ -46,6 +39,8 @@ return [
 ];
 ````
 
+The modal can be recalled and edited by triggering the event `cookies:update` on the `<bod>` tag.
+
 ## Methods
 - `isFeatureAllowed(string $featureName)` Checks if a user allowed given feature
 ```php
@@ -57,9 +52,8 @@ return [
 - `clearAllowedFeatures()` Clear all allowed features
 
 ## Roadmap
-
-- Better custom theme
-- Set up Wiki
+- Add wiki
+- Refactor code + add comments
 
 ---
 

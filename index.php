@@ -5,8 +5,8 @@ require_once __DIR__ . '/lib/CookieMethods.php';
 
 Kirby::plugin('michnhokn/cookie-banner', [
     'snippets' => [
-        'cookie-banner' => __DIR__ . '/snippets/cookie-banner.php',
-        'cookie-banner-option' => __DIR__ . '/snippets/cookie-banner-option.php',
+        'cookie-modal' => __DIR__ . '/snippets/cookie-modal.php',
+        'cookie-modal-option' => __DIR__ . '/snippets/cookie-modal-option.php',
     ],
     'translations' => [
         'de' => [
