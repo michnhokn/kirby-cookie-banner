@@ -2,7 +2,7 @@
     "name": "michnhokn/kirby3-cookie-banner",
     "description": "Add a cookie modal to your Kirby3 website",
     "type": "kirby-plugin",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "license": "MIT",
     "authors": [
         {
