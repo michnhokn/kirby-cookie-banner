@@ -26,7 +26,7 @@ class CookieBanner {
       $denyButton = document.querySelector(_this.SELECTOS.denyButton),
       $saveButton = document.querySelector(_this.SELECTOS.saveButton);
     $options.forEach(option => {
-      option.addEventListener('change', event => {
+      option.addEventListener('change', _ => {
         _this.checkOptions();
       });
     });
@@ -62,7 +62,8 @@ class CookieBanner {
       _this.addClass(_this.SELECTOS.acceptButton, _this.CLASSES.buttonHide);
       _this.addClass(_this.SELECTOS.denyButton, _this.CLASSES.buttonHide);
       _this.removeClass(_this.SELECTOS.saveButton, _this.CLASSES.buttonHide);
-    } else {
+    }
+    else {
       _this.removeClass(_this.SELECTOS.acceptButton, _this.CLASSES.buttonHide);
       _this.removeClass(_this.SELECTOS.denyButton, _this.CLASSES.buttonHide);
       _this.addClass(_this.SELECTOS.saveButton, _this.CLASSES.buttonHide);
@@ -83,14 +84,16 @@ class CookieBanner {
 
   getOptions(status) {
     let _this = this, optionsString = '';
-    document.querySelectorAll(_this.SELECTOS.options).forEach(option => {
+    document.querySelectorAll(_this.SELECTOS.options).forEach((option, i) => {
       switch (status) {
         case 'all':
-          optionsString += option.dataset.cookieId + ',';
+          optionsString += i > 0 ? ',' : '';
+          optionsString += option.dataset.cookieId;
           break;
         case 'custom':
           if (option.querySelector('input').checked) {
-            optionsString += option.dataset.cookieId + ',';
+            optionsString += i > 0 ? ',' : '';
+            optionsString += option.dataset.cookieId;
           }
           break;
         default:
