@@ -2,7 +2,7 @@
 ![Release](https://flat.badgen.net/packagist/v/michnhokn/kirby3-cookie-banner?color=92a9c4)
 ![Last Commit](https://flat.badgen.net/github/last-commit/michnhokn/kirby3-cookie-banner?color=92c496)
 
-![kirby3-cookie-banner](https://user-images.githubusercontent.com/38752255/93144377-2c0c3880-f6ea-11ea-8ef0-82a178e0b04e.gif)
+![kirby3-cookie-banner](https://user-images.githubusercontent.com/38752255/93235175-7ab6e280-f77d-11ea-9b8a-5a8c144344d7.gif)
 
 ## Commercial Usage
 
