@@ -1,8 +1,8 @@
 {
     "name": "michnhokn/kirby3-cookie-banner",
-    "description": "Add cookie banner to your Kirby website",
+    "description": "Add a cookie modal to your Kirby3 website",
     "type": "kirby-plugin",
-    "version": "0.9.0",
+    "version": "1.0.1",
     "license": "MIT",
     "authors": [
         {
@@ -15,13 +15,9 @@
         "kirby3-cms",
         "kirby3-plugin",
         "cookies",
+        "cookie-modal",
         "cookie-banner"
     ],
-    "autoload": {
-        "psr-4": {
-            "Michnhokn\\": "lib/"
-        }
-    },
     "config": {
         "optimize-autoloader": true
     },
