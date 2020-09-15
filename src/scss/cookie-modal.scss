@@ -1,4 +1,4 @@
-.cookie-banner {
+.cookie-modal {
   position: fixed;
   z-index: 1000;
   width: 100%;
@@ -7,6 +7,10 @@
   left: 0;
   top: 0;
   pointer-events: none;
+
+  &--hidden {
+    display: none;
+  }
 
   &__content {
     max-width: 600px;
@@ -137,12 +141,7 @@
       padding: 10px 24px;
     }
 
-    &:focus, &:hover {
-      outline: none;
-      border-color: #81a2be;
-    }
-
-    &--accept, &--save {
+    &.primary {
       background-color: #000000;
       color: #FFFFFF;
 
@@ -151,7 +150,12 @@
       }
     }
 
-    &--hide {
+    &:focus, &:hover {
+      outline: none;
+      border-color: #81a2be;
+    }
+
+    &.hide {
       display: none;
     }
   }
