@@ -15,48 +15,44 @@ This plugin is free but if you use it in a commercial project please consider to
 - `composer require michnhokn/kirby3-cookie-banner`
 
 ## Features
-- Add custom features to cookie modal
-- You can fully translate the cookie banner ([Custom language variables](https://getkirby.com/docs/guide/languages/custom-language-variables))
-- Intercept cookie status via JavaScript event
-- PHP functions to check for allowed features
-- Trigger JavaScript event to update Cookie Modal
+- Add a custom cookie consent modal
+- Fully [translatable](https://github.com/michnhokn/kirby3-cookie-banner/wiki/02-Translate-the-modal).
+- [Intercept](https://github.com/michnhokn/kirby3-cookie-banner/wiki/01-How-to-set-it-up#-intercept-changes-to-the-cookie-settings) cookie status
+- [PHP functions](https://github.com/michnhokn/kirby3-cookie-banner/wiki/03-PHP-functions) to check for allowed features
+
+For more features check out the [wiki](https://github.com/michnhokn/kirby3-cookie-banner/wiki).
 
 ## Setup
-To setup the cookie banner just put the `cookie-modal` snippet right befor your closing body tag. Thats it. 🎉
-``` php
-<?php snippet('cookie-modal') ?>
-```
-If a selection is made an event called `cookies:saved` is triggerd on `<body>`. The included data contains an array of allowed features.
-You can set these up in your `config.php` file under `site/config/`.
-````php
-return [
-    'michnhokn.cookie-banner' => [
-        'features' => [
-            'analytics' => 'Analytics',
-            'mapbox' => 'Mapbox'
+1. Put the `cookie-modal` snippet right before the closing body tag.
+    ``` php
+    <?php snippet('cookie-modal', ['assets' => true]) ?>
+    ```
+2. Set up your features for the cookie modal.
+    ````php
+    return [
+        'michnhokn.cookie-banner' => [
+            'features' => [
+                'analytics' => 'Analytics',
+                'mapbox' => 'Mapbox'
+            ]
         ]
-    ]
-];
-````
+    ];
+    ````
+3. Listen for the `cookied:saved` event and receive an `array` of allowed features.
+   ````javascript
+   u('body').on('cookies:saved', event => {
+       console.log('Saved cookie features:', event.detail);
+   })
+   ````
 
-The modal can be recalled and edited by triggering the event `cookies:update` on the `<bod>` tag.
+Learn more in the [wiki](https://github.com/michnhokn/kirby3-cookie-banner/wiki/01-How-to-set-it-up).
 
 ## Methods
-- `isFeatureAllowed(string $featureName)` Checks if a user allowed given feature
-```php
-<?php if (isFeatureAllowed('analytics')): ?>
-    <h1>Analytics allowed</h1>
-<?php endif; ?>
-```
-- `getAllowedFeatures()` Get all allowed features or false if nothing is selected
-- `clearAllowedFeatures()` Clear all allowed features
+See all available functions in the [wiki](https://github.com/michnhokn/kirby3-cookie-banner/wiki/03-PHP-functions).
 
-## Roadmap
-- Add wiki
-- Refactor code + add comments
+## Misc
+**Roadmap**: Have a look at this [project](https://github.com/michnhokn/kirby3-cookie-banner/projects/1).
 
----
+**License**: `MIT`
 
-License: `MIT`
-
-Credits: [MichnHokn](https://github.com/michnhokn)
+**Credits**: [MichnHokn](https://github.com/michnhokn)
