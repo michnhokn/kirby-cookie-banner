@@ -17,7 +17,7 @@
                 <?php snippet('cookie-modal-option', [
                     'disabled' => false,
                     'key' => $key,
-                    'title' => h($title)
+                    'title' => t($title, $title)
                 ]) ?>
             <?php endforeach; ?>
         </div>
@@ -38,6 +38,6 @@
     </div>
 </div>
 <?php if ($assets): ?>
-    <?= js('media/plugins/michnhokn/cookie-banner/cookie-modal.js') ?>
+    <?= js('media/plugins/michnhokn/cookie-banner/cookie-modal.js', ['defer' => true]) ?>
 <?php endif; ?>
 
