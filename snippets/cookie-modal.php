@@ -38,6 +38,6 @@
     </div>
 </div>
 <?php if ($assets): ?>
-    <?= js('media/plugins/michnhokn/cookie-banner/cookie-modal.js') ?>
+    <?= js('media/plugins/michnhokn/cookie-banner/cookie-modal.js', ['defer' => true]) ?>
 <?php endif; ?>
 
