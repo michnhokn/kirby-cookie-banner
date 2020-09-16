@@ -1,4 +1,7 @@
-<?= css('media/plugins/michnhokn/cookie-banner/cookie-modal.css') ?>
+<?php $assets = isset($assets) ? $assets : false; ?>
+<?php if ($assets): ?>
+    <?= css('media/plugins/michnhokn/cookie-banner/cookie-modal.css') ?>
+<?php endif; ?>
 <div class="cookie-modal cookie-modal--hidden" id="cookie-modal">
     <div class="cookie-modal__content">
         <p class="cookie-modal__title"><?= t('michnhokn.cookie-banner.title') ?></p>
@@ -34,4 +37,7 @@
         </div>
     </div>
 </div>
-<?= js('media/plugins/michnhokn/cookie-banner/cookie-modal.js') ?>
+<?php if ($assets): ?>
+    <?= js('media/plugins/michnhokn/cookie-banner/cookie-modal.js') ?>
+<?php endif; ?>
+
