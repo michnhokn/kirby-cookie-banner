@@ -17,7 +17,7 @@
                 <?php snippet('cookie-modal-option', [
                     'disabled' => false,
                     'key' => $key,
-                    'title' => h($title)
+                    'title' => t($title, $title)
                 ]) ?>
             <?php endforeach; ?>
         </div>
