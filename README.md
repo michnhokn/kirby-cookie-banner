@@ -10,7 +10,7 @@ This plugin is free but if you use it in a commercial project please consider to
 - [buy me a 🍺](https://buymeacoff.ee/michnhokn)
 
 ## Installation
-- unzip [master.zip](https://github.com/michnhokn/kirby3-cookie-banner/archive/master.zip) as folder `site/pluginskirby3-cookie-banner` or
+- unzip [master.zip](https://github.com/michnhokn/kirby3-cookie-banner/archive/master.zip) as folder `site/plugins/kirby3-cookie-banner` or
 - `git submodule add https://github.com/michnhokn/kirby3-cookie-banner.git site/plugins/kirby3-cookie-banner` or
 - `composer require michnhokn/kirby3-cookie-banner`
 
