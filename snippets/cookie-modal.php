@@ -1,4 +1,8 @@
-<?php $assets = isset($assets) ? $assets : false; ?>
+<?php
+$assets = isset($assets) ? $assets : false;
+$features = isset($features) ? $features : [];
+$features = array_merge(option('michnhokn.cookie-banner.features'), $features);
+?>
 <?php if ($assets): ?>
     <?= css('media/plugins/michnhokn/cookie-banner/cookie-modal.css') ?>
 <?php endif; ?>
@@ -13,7 +17,7 @@
                 'key' => 'essential',
                 'title' => t('michnhokn.cookie-banner.essentialText')
             ]) ?>
-            <?php foreach (option('michnhokn.cookie-banner.features') as $key => $title): ?>
+            <?php foreach ($features as $key => $title): ?>
                 <?php snippet('cookie-modal-option', [
                     'disabled' => false,
                     'key' => $key,
