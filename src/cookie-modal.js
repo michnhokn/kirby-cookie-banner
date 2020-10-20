@@ -86,8 +86,7 @@ class CookieModal {
       _this.$ACCEPT_BUTTON.addClass('hide');
       _this.$DENY_BUTTON.addClass('hide');
       _this.$SAVE_BUTTON.removeClass('hide');
-    }
-    else {
+    } else {
       _this.$ACCEPT_BUTTON.removeClass('hide');
       _this.$DENY_BUTTON.removeClass('hide');
       _this.$SAVE_BUTTON.addClass('hide');
@@ -95,11 +94,7 @@ class CookieModal {
   }
 
   setCookie(features) {
-    Cookies.set(
-      'cookie_status',
-      features.join(','),
-      {expires: 365, secure: true},
-    );
+    Cookies.set('cookie_status', features.join(','), {expires: 365});
   }
 
   closeCookieModal() {
