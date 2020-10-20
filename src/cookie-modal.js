@@ -1,4 +1,4 @@
-import '../scss/cookie-modal.scss';
+import './cookie-modal.scss';
 import Cookies from 'js-cookie';
 import u from 'umbrellajs/umbrella.esm';
 

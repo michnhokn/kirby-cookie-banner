@@ -4,8 +4,8 @@
   "description": "",
   "author": "Michael Scheurich <contact@michaelscheurich.dev>",
   "scripts": {
-    "dev": "parcel watch ./src/js/cookie-modal.js -d ./assets --public-url ./ --no-hmr",
-    "build": "parcel build ./src/js/cookie-modal.js -d ./assets --public-url ./ --no-source-maps --no-content-hash"
+    "dev": "parcel watch ./src/cookie-modal.js -d ./assets --public-url ./ --no-hmr",
+    "build": "parcel build ./src/cookie-modal.js -d ./assets --public-url ./ --no-source-maps --no-content-hash"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
