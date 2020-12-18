@@ -1,23 +1,41 @@
 import './cookie-modal.scss';
 import Cookies from 'js-cookie';
-import u from 'umbrellajs/umbrella.esm';
+
+function element(selector) {
+  return document.querySelector(selector);
+}
+
+function allElements(selector) {
+  return document.querySelectorAll(selector);
+}
+
+function triggerEvent(eventName, data = {}) {
+  let customEvent = null;
+  if (window.CustomEvent && typeof window.CustomEvent === 'function') {
+    customEvent = new CustomEvent(eventName, {detail: data});
+  } else {
+    customEvent = document.createEvent('CustomEvent');
+    customEvent.initCustomEvent(eventName, true, true, data);
+  }
+  document.querySelector('body').dispatchEvent(customEvent);
+}
 
 class CookieModal {
   constructor() {
-    this.$COOKIE_MODAL = u('#cookie-modal');
-    this.$FEATURES = u('.cookie-modal__checkbox');
-    this.$ACCEPT_BUTTON = u('#cookie-accept');
-    this.$DENY_BUTTON = u('#cookie-deny');
-    this.$SAVE_BUTTON = u('#cookie-save');
+    this.$COOKIE_MODAL = element('#cookie-modal');
+    this.$FEATURES = allElements('.cookie-modal__checkbox');
+    this.$ACCEPT_BUTTON = element('#cookie-accept');
+    this.$DENY_BUTTON = element('#cookie-deny');
+    this.$SAVE_BUTTON = element('#cookie-save');
 
     this.MODAL_OPEN = false;
     this.MINUMUM_FEATURES = ['essential'];
     this.MAXIMUM_FEATURES = [];
     this.CUSTOM_FEATURES = [];
 
-    this.initCookieModal().then(_ => {
-      this.registerHooks();
-    });
+    this.initCookieModal().then(_ => this.registerHooks());
+
+    console.log(this);
   }
 
   initCookieModal() {
@@ -34,11 +52,22 @@ class CookieModal {
 
   registerHooks() {
     const _this = this;
-    _this.$FEATURES.on('change', _ => _this.updateCustomFeatures());
-    _this.$ACCEPT_BUTTON.on('click', _ => _this.save(_this.MAXIMUM_FEATURES));
-    _this.$DENY_BUTTON.on('click', _ => _this.save(_this.MINUMUM_FEATURES));
-    _this.$SAVE_BUTTON.on('click', _ => _this.save(_this.CUSTOM_FEATURES));
-    u('body').on('cookies:update', _ => {
+    Array.prototype.forEach.call(_this.$FEATURES, feature => {
+      feature.addEventListener('change', _ => _this.updateCustomFeatures());
+    });
+    _this.$ACCEPT_BUTTON.addEventListener(
+      'click',
+      _ => _this.save(_this.MAXIMUM_FEATURES),
+    );
+    _this.$DENY_BUTTON.addEventListener(
+      'click',
+      _ => _this.save(_this.MINUMUM_FEATURES),
+    );
+    _this.$SAVE_BUTTON.addEventListener(
+      'click',
+      _ => _this.save(_this.CUSTOM_FEATURES),
+    );
+    element('body').addEventListener('cookies:update', _ => {
       _this.loadCustomFeatures();
       _this.openCookieModal();
     });
@@ -46,8 +75,9 @@ class CookieModal {
 
   loadMaximumFeatures() {
     const _this = this;
-    _this.$FEATURES.each(feature => {
-      _this.MAXIMUM_FEATURES.push(u(feature).data('cookie-id').toLowerCase());
+    Array.prototype.forEach.call(_this.$FEATURES, feature => {
+      const featureKey = feature.dataset.cookieId.toLowerCase();
+      _this.MAXIMUM_FEATURES.push(featureKey);
     });
   }
 
@@ -55,9 +85,14 @@ class CookieModal {
     const _this = this;
     if (Cookies.get('cookie_status')) {
       _this.CUSTOM_FEATURES = Cookies.get('cookie_status').split(',');
-      _this.$FEATURES.filter(feature => {
-        return _this.CUSTOM_FEATURES.indexOf(u(feature).data('cookie-id')) > -1;
-      }).attr({checked: true});
+      const activeFeatures = Array.prototype.filter.call(_this.$FEATURES,
+        feature => {
+          const featureKey = feature.dataset.cookieId.toLowerCase();
+          return _this.CUSTOM_FEATURES.indexOf(featureKey) > -1;
+        });
+      Array.prototype.forEach.call(activeFeatures, feature => {
+        feature.setAttribute('checked', true);
+      });
       _this.updateButtons();
     }
   }
@@ -65,8 +100,13 @@ class CookieModal {
   updateCustomFeatures() {
     const _this = this;
     _this.CUSTOM_FEATURES = [];
-    _this.$FEATURES.filter(feature => u(feature).is(':checked')).each(f => {
-      _this.CUSTOM_FEATURES.push(u(f).data('cookie-id'));
+    const checkedFeatures = Array.prototype.filter.call(
+      _this.$FEATURES,
+      feature => feature.checked,
+    );
+    Array.prototype.forEach.call(checkedFeatures, feature => {
+      const featureKey = feature.dataset.cookieId.toLowerCase();
+      _this.CUSTOM_FEATURES.push(featureKey);
     });
     _this.updateButtons();
   }
@@ -74,7 +114,7 @@ class CookieModal {
   save(features) {
     const _this = this;
     event.preventDefault();
-    u('body').trigger('cookies:saved', features);
+    triggerEvent('cookies:saved', features);
     _this.setCookie(features);
     _this.CUSTOM_FEATURES = features;
     _this.closeCookieModal();
@@ -83,13 +123,13 @@ class CookieModal {
   updateButtons() {
     let _this = this;
     if (_this.CUSTOM_FEATURES.length > 1) {
-      _this.$ACCEPT_BUTTON.addClass('hide');
-      _this.$DENY_BUTTON.addClass('hide');
-      _this.$SAVE_BUTTON.removeClass('hide');
+      _this.$ACCEPT_BUTTON.classList.add('hide');
+      _this.$DENY_BUTTON.classList.add('hide');
+      _this.$SAVE_BUTTON.classList.remove('hide');
     } else {
-      _this.$ACCEPT_BUTTON.removeClass('hide');
-      _this.$DENY_BUTTON.removeClass('hide');
-      _this.$SAVE_BUTTON.addClass('hide');
+      _this.$ACCEPT_BUTTON.classList.remove('hide');
+      _this.$DENY_BUTTON.classList.remove('hide');
+      _this.$SAVE_BUTTON.classList.add('hide');
     }
   }
 
@@ -99,15 +139,15 @@ class CookieModal {
 
   closeCookieModal() {
     const _this = this;
-    _this.$COOKIE_MODAL.addClass('cookie-modal--hidden');
+    _this.$COOKIE_MODAL.classList.add('cookie-modal--hidden');
     _this.MODAL_OPEN = false;
   }
 
   openCookieModal() {
     const _this = this;
-    _this.$COOKIE_MODAL.removeClass('cookie-modal--hidden');
+    _this.$COOKIE_MODAL.classList.remove('cookie-modal--hidden');
     _this.MODAL_OPEN = true;
   }
 }
 
-u(document).on('DOMContentLoaded', _ => new CookieModal());
+document.addEventListener('DOMContentLoaded', _ => new CookieModal());
