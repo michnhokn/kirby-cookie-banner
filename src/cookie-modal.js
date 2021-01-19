@@ -32,10 +32,9 @@ class CookieModal {
     this.MINUMUM_FEATURES = ['essential'];
     this.MAXIMUM_FEATURES = [];
     this.CUSTOM_FEATURES = [];
+    this.SHOW_ON_FIRST = this.$COOKIE_MODAL.dataset.showOnFirst === 'true';
 
     this.initCookieModal().then(_ => this.registerHooks());
-
-    console.log(this);
   }
 
   initCookieModal() {
@@ -43,7 +42,7 @@ class CookieModal {
     return new Promise(resolve => {
       _this.loadMaximumFeatures();
       _this.loadCustomFeatures();
-      if (_this.CUSTOM_FEATURES.length === 0) {
+      if (_this.CUSTOM_FEATURES.length === 0 && this.SHOW_ON_FIRST) {
         _this.openCookieModal();
       }
       resolve();

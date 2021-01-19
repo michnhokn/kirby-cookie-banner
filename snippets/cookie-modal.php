@@ -1,12 +1,14 @@
 <?php
 $assets = isset($assets) ? $assets : false;
+$showOnFirst = isset($showOnFirst) ? $showOnFirst : true;
 $features = isset($features) ? $features : [];
 $features = array_merge(option('michnhokn.cookie-banner.features'), $features);
 ?>
 <?php if ($assets): ?>
     <?= css('media/plugins/michnhokn/cookie-banner/cookie-modal.css') ?>
 <?php endif; ?>
-<div class="cookie-modal cookie-modal--hidden" id="cookie-modal">
+<div class="cookie-modal cookie-modal--hidden" id="cookie-modal"
+     data-show-on-first="<?= $showOnFirst ? 'true' : 'false' ?>">
     <div class="cookie-modal__content">
         <p class="cookie-modal__title"><?= t('michnhokn.cookie-banner.title') ?></p>
         <p class="cookie-modal__text"><?= kti(t('michnhokn.cookie-banner.text')) ?></p>
