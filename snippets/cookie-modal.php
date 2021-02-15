@@ -10,14 +10,14 @@ $features = array_merge(option('michnhokn.cookie-banner.features'), $features);
 <div class="cookie-modal cookie-modal--hidden" id="cookie-modal"
      data-show-on-first="<?= $showOnFirst ? 'true' : 'false' ?>">
     <div class="cookie-modal__content">
-        <p class="cookie-modal__title"><?= t('michnhokn.cookie-banner.title') ?></p>
-        <p class="cookie-modal__text"><?= kti(t('michnhokn.cookie-banner.text')) ?></p>
+        <p class="cookie-modal__title"><?= getCookieModalTranslation('title') ?></p>
+        <p class="cookie-modal__text"><?= kti(getCookieModalTranslation('text')) ?></p>
         <div class="cookie-modal__options">
             <?php snippet('cookie-modal-option', [
                 'disabled' => true,
                 'checked' => true,
                 'key' => 'essential',
-                'title' => t('michnhokn.cookie-banner.essentialText')
+                'title' => getCookieModalTranslation('essentialText')
             ]) ?>
             <?php foreach ($features as $key => $title): ?>
                 <?php snippet('cookie-modal-option', [
@@ -29,16 +29,16 @@ $features = array_merge(option('michnhokn.cookie-banner.features'), $features);
         </div>
         <div class="cookie-modal__buttons">
             <a href="#" class="cookie-modal__button primary" id="cookie-accept"
-               title="<?= t('michnhokn.cookie-banner.acceptAll') ?>">
-                <span><?= t('michnhokn.cookie-banner.acceptAll') ?></span>
+               title="<?= getCookieModalTranslation('acceptAll') ?>">
+                <span><?= getCookieModalTranslation('acceptAll') ?></span>
             </a>
             <a href="#" class="cookie-modal__button" id="cookie-deny"
-               title="<?= t('michnhokn.cookie-banner.denyAll') ?>">
-                <span><?= t('michnhokn.cookie-banner.denyAll') ?></span>
+               title="<?= getCookieModalTranslation('denyAll') ?>">
+                <span><?= getCookieModalTranslation('denyAll') ?></span>
             </a>
             <a href="#" class="cookie-modal__button hide" id="cookie-save"
-               title="<?= t('michnhokn.cookie-banner.save') ?>">
-                <span><?= t('michnhokn.cookie-banner.save') ?></span>
+               title="<?= getCookieModalTranslation('save') ?>">
+                <span><?= getCookieModalTranslation('save') ?></span>
             </a>
         </div>
     </div>
