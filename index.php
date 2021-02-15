@@ -3,6 +3,15 @@
 @include_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/lib/CookieMethods.php';
 
+const DEFAULT_CONTENT = [
+    'title' => 'Cookie Einstellungen',
+    'text' => 'Wir nutzen Cookies um Dir die bestmögliche Erfahrung zu bieten. Außerdem können wir damit das Verhalten der Benutzer analysieren um die Webseite stetig für Dich zu verbessern. (link: datenschutz text: Datenschutz)',
+    'essentialText' => 'Essentiell',
+    'denyAll' => 'Alle ablehnen',
+    'acceptAll' => 'Alle annehmen',
+    'save' => 'Einstellung speichern',
+];
+
 Kirby::plugin('michnhokn/cookie-banner', [
     'snippets' => [
         'cookie-modal' => __DIR__ . '/snippets/cookie-modal.php',
@@ -10,12 +19,7 @@ Kirby::plugin('michnhokn/cookie-banner', [
     ],
     'translations' => [
         'de' => [
-            'michnhokn.cookie-banner.title' => 'Cookie Einstellungen',
-            'michnhokn.cookie-banner.text' => 'Wir nutzen Cookies um Dir die bestmögliche Erfahrung zu bieten. Außerdem können wir damit das Verhalten der Benutzer analysieren um die Webseite stetig für Dich zu verbessern. (link: datenschutz text: Datenschutz)',
-            'michnhokn.cookie-banner.essentialText' => 'Essentiell',
-            'michnhokn.cookie-banner.denyAll' => 'Alle ablehnen',
-            'michnhokn.cookie-banner.acceptAll' => 'Alle annehmen',
-            'michnhokn.cookie-banner.save' => 'Einstellung speichern',
+            'michnhokn.cookie-banner' => DEFAULT_CONTENT
         ],
         'en' => [
             'michnhokn.cookie-banner.title' => 'Cookie settings',
@@ -27,6 +31,7 @@ Kirby::plugin('michnhokn/cookie-banner', [
         ]
     ],
     'options' => [
-        'features' => []
+        'features' => [],
+        'content' => DEFAULT_CONTENT
     ]
 ]);
