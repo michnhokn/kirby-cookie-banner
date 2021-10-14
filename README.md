@@ -25,6 +25,7 @@ This plugin is free but if you use it in a commercial project please consider to
 - [Intercept](https://github.com/michnhokn/kirby3-cookie-banner/wiki/01-How-to-set-it-up#-intercept-changes-to-the-cookie-settings)
   cookie status
 - [PHP functions](https://github.com/michnhokn/kirby3-cookie-banner/wiki/03-PHP-functions) to check for allowed features
+- Auto loading of consented scripts and loading prevention of non-consented scripts
 
 For more features check out the [wiki](https://github.com/michnhokn/kirby3-cookie-banner/wiki).
 
