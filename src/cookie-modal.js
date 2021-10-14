@@ -153,13 +153,13 @@ class CookieModal {
     const _this = this;
 
     const activeFeatures = (Cookies.get('cookie_status') || '').split(',');
-    const scriptElements = document.querySelectorAll('script[data-cookie-category]');
+    const scriptElements = document.querySelectorAll('script[data-cookie-feature]');
 
     let scriptDeactivated = false;
     const scriptsToActivate = [];
 
     Array.prototype.forEach.call(scriptElements, scriptElement => {
-      const identifier = scriptElement.getAttribute('data-cookie-category');
+      const identifier = scriptElement.getAttribute('data-cookie-feature');
       const isActive = scriptElement.getAttribute('type') !== 'text/plain';
       const shouldBeActive = activeFeatures.indexOf(identifier) > -1;
 
