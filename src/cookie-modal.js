@@ -186,6 +186,7 @@ class CookieModal {
       el.setAttribute(attr.nodeName, attr.nodeValue);
     });
     el.setAttribute('type', 'text/javascript'); // override type to execute script tag
+    el.innerHTML = scriptElement.innerHTML; // copy script tag content
     scriptElement.parentNode.replaceChild(el, scriptElement);
   }
 }
