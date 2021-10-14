@@ -56,6 +56,12 @@ For more features check out the [wiki](https://github.com/michnhokn/kirby3-cooki
    })
    ````
 
+4. Alternatively modify your script tags to use `type="text/plain"` (to prevent immediate execution) and add `data-cookie-feature="feature-identifier"` with the identifier of a configured feature.
+   ````html
+    <script src="https://service.tld/analytics.js" type="text/plain" data-cookie-feature="analytics"></script>
+    ````
+   This script will only be loaded and executed when the declared cookie feature `analytics` gets activated through the cookie banner by the user. Also on page load the activation state will be checked and if positive the script will be loaded and executed as well. If the user deactivates a priorly activated feature, the current page will be reloaded to remove all scripts of that feature from the page.
+
 Learn more in the [wiki](https://github.com/michnhokn/kirby3-cookie-banner/wiki/01-How-to-set-it-up).
 
 ## Methods
