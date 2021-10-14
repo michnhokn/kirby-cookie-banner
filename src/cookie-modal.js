@@ -190,4 +190,8 @@ class CookieModal {
   }
 }
 
-document.addEventListener('DOMContentLoaded', _ => new CookieModal());
+if (document.readyState !== 'loading') {
+  new CookieModal();
+} else {
+  document.addEventListener('DOMContentLoaded', _ => new CookieModal());
+}
