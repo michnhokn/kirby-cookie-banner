@@ -4,13 +4,15 @@
   "description": "",
   "author": "Michael Scheurich <contact@michaelscheurich.dev>",
   "scripts": {
-    "dev": "parcel watch ./src/cookie-modal.js -d ./assets --public-url ./ --no-hmr",
-    "build": "parcel build ./src/cookie-modal.js -d ./assets --public-url ./ --no-source-maps --no-content-hash"
+    "dev": "parcel watch ./src/cookie-modal.js --dist-dir ./assets --public-url ./ --no-hmr",
+    "build": "parcel build ./src/cookie-modal.js --dist-dir ./assets --public-url ./ --no-source-maps --no-content-hash"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "@parcel/transformer-sass": "^2.0.0",
     "cssnano": "^4.1.10",
+    "parcel": "^2.0.0",
     "sass": "^1.22.9"
   },
   "dependencies": {
