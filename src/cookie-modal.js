@@ -34,7 +34,7 @@ class CookieModal {
     this.CUSTOM_FEATURES = [];
     this.SHOW_ON_FIRST = this.$COOKIE_MODAL.dataset.showOnFirst === 'true';
 
-    this.initCookieModal().then(_ => this.registerHooks());
+    this.initCookieModal().then(_ => this.registerHooks()).then(_ => this.switchScriptTags());
   }
 
   initCookieModal() {
@@ -117,6 +117,7 @@ class CookieModal {
     _this.setCookie(features);
     _this.CUSTOM_FEATURES = features;
     _this.closeCookieModal();
+    _this.switchScriptTags();
   }
 
   updateButtons() {
@@ -146,6 +147,46 @@ class CookieModal {
     const _this = this;
     _this.$COOKIE_MODAL.classList.remove('cookie-modal--hidden');
     _this.MODAL_OPEN = true;
+  }
+
+  switchScriptTags() {
+    const _this = this;
+
+    const activeFeatures = (Cookies.get('cookie_status') || '').split(',');
+    const scriptElements = document.querySelectorAll('script[data-cookie-category]');
+
+    let scriptDeactivated = false;
+    const scriptsToActivate = [];
+
+    Array.prototype.forEach.call(scriptElements, scriptElement => {
+      const identifier = scriptElement.getAttribute('data-cookie-category');
+      const isActive = scriptElement.getAttribute('type') !== 'text/plain';
+      const shouldBeActive = activeFeatures.indexOf(identifier) > -1;
+
+      if (isActive !== shouldBeActive) {
+        if (isActive) {
+          scriptDeactivated = true;
+        } else {
+          scriptsToActivate.push(scriptElement);
+        }
+      }
+    });
+
+    if (scriptDeactivated) {
+      window.location.reload(false);
+      return;
+    }
+
+    scriptsToActivate.forEach(_this.activateScriptTag);
+  }
+
+  activateScriptTag(scriptElement) {
+    const el = document.createElement('script');
+    Array.prototype.forEach.call(scriptElement.attributes, attr => {
+      el.setAttribute(attr.nodeName, attr.nodeValue);
+    });
+    el.setAttribute('type', 'text/javascript'); // override type to execute script tag
+    scriptElement.parentNode.replaceChild(el, scriptElement);
   }
 }
 
