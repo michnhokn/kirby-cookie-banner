@@ -133,7 +133,7 @@ class CookieModal {
   }
 
   setCookie(features) {
-    Cookies.set('cookie_status', features.join(','), {expires: 365});
+    Cookies.set('cookie_status', features.join(','), {expires: 365, sameSite: 'lax'});
   }
 
   closeCookieModal() {
