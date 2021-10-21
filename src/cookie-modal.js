@@ -113,6 +113,9 @@ class CookieModal {
   save(features) {
     const _this = this;
     event.preventDefault();
+    if (!features.length) {
+      features = _this.MINUMUM_FEATURES;
+    }
     triggerEvent('cookies:saved', features);
     _this.setCookie(features);
     _this.CUSTOM_FEATURES = features;

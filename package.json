@@ -11,7 +11,7 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "cssnano": "^4.1.10",
-    "sass": "^1.22.9"
+    "sass": "^1.37.5"
   },
   "dependencies": {
     "js-cookie": "^2.2.1"
