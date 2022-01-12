@@ -44,6 +44,8 @@ class CookieModal {
       _this.loadCustomFeatures();
       if (_this.CUSTOM_FEATURES.length === 0 && this.SHOW_ON_FIRST) {
         _this.openCookieModal();
+      } else if(_this.CUSTOM_FEATURES.length !== 0) {
+        triggerEvent('cookies:loaded', _this.CUSTOM_FEATURES);
       }
       resolve();
     });
