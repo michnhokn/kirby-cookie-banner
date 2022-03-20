@@ -30,6 +30,7 @@
     font-size: 1.4rem;
     font-weight: bold;
     margin-bottom: 10px;
+    margin-top: 0;
   }
 
   &__text {
@@ -82,19 +83,20 @@
     height: 20px;
     border-radius: 0;
     border: 2px solid #000000;
+    margin: 0;
     margin-right: 6px;
     flex-shrink: 0;
 
     &:checked {
       background-color: #000000;
 
-      &:focus {
+      &:focus-visible {
         outline: none;
         background-color: #81a2be;
       }
     }
 
-    &:focus {
+    &:focus-visible {
       outline: none;
       border-color: #81a2be;
     }
@@ -145,12 +147,12 @@
       background-color: #000000;
       color: #FFFFFF;
 
-      &:focus, &:hover {
+      &:focus-visible, &:hover {
         background-color: #81a2be;
       }
     }
 
-    &:focus, &:hover {
+    &:focus-visible, &:hover {
       outline: none;
       border-color: #81a2be;
     }
