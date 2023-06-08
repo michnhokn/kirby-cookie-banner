@@ -4,8 +4,8 @@
   "description": "",
   "author": "Michael Scheurich <contact@michaelscheurich.dev>",
   "scripts": {
-    "dev": "parcel watch ./src/cookie-modal.js ./src/cookie-modal.scss --dist-dir ./assets",
-    "build": "parcel build ./src/cookie-modal.js ./src/cookie-modal.scss --dist-dir ./assets --no-source-maps"
+    "dev": "parcel watch ./src/cookie-banner.js ./src/cookie-banner.scss --dist-dir ./assets",
+    "build": "parcel build ./src/cookie-banner.js ./src/cookie-banner.scss --dist-dir ./assets --no-source-maps"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.1.1",

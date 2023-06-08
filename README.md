@@ -14,7 +14,7 @@ This plugin is free but if you use it in a commercial project please consider to
 ## Installation
 
 - unzip [master.zip](https://github.com/michnhokn/kirby3-cookie-banner/archive/master.zip) as
-  folder `site/plugins/kirby3-cookie-banner` or
+	folder `site/plugins/kirby3-cookie-banner` or
 - `git submodule add https://github.com/michnhokn/kirby3-cookie-banner.git site/plugins/kirby3-cookie-banner` or
 - `composer require michnhokn/kirby3-cookie-banner`
 
@@ -23,38 +23,38 @@ This plugin is free but if you use it in a commercial project please consider to
 - Add a custom cookie consent modal
 - Fully [translatable](https://github.com/michnhokn/kirby3-cookie-banner/wiki/02-Translate-the-modal).
 - [Intercept](https://github.com/michnhokn/kirby3-cookie-banner/wiki/01-How-to-set-it-up#-intercept-changes-to-the-cookie-settings)
-  cookie status
+	cookie status
 - [PHP functions](https://github.com/michnhokn/kirby3-cookie-banner/wiki/03-PHP-functions) to check for allowed features
 
 For more features check out the [wiki](https://github.com/michnhokn/kirby3-cookie-banner/wiki).
 
 ## Setup
 
-1. Put the `cookie-modal` snippet right before the closing body tag.
-    ```` php
-    <?php snippet('cookie-modal', [
-        'assets' => true,
-        'showOnFirst' => true,
-        'features' => [...],
-    ]) ?>
-    ````
+1. Put the `cookie-banner` snippet right before the opening body tag.
+		```` php
+		<?php snippet('cookie-banner', [
+				'assets' => true,
+				'showOnFirst' => true,
+				'features' => [...],
+		]) ?>
+		````
 2. Set up your features for the cookie modal.
-    ````php
-    return [
-        'michnhokn.cookie-banner' => [
-            'features' => [
-                'analytics' => 'Analytics',
-                'mapbox' => 'Mapbox'
-            ]
-        ]
-    ];
-    ````
+		````php
+		return [
+				'michnhokn.cookie-banner' => [
+						'features' => [
+								'analytics' => 'Analytics',
+								'mapbox' => 'Mapbox'
+						]
+				]
+		];
+		````
 3. Listen for the `cookied:saved` event and receive an `array` of allowed features.
-   ````javascript
-   u('body').on('cookies:saved', event => {
-       console.log('Saved cookie features:', event.detail);
-   })
-   ````
+ 	````javascript
+ 	u('body').on('cookies:saved', event => {
+ 			console.log('Saved cookie features:', event.detail);
+ 	})
+ 	````
 
 Learn more in the [wiki](https://github.com/michnhokn/kirby3-cookie-banner/wiki/01-How-to-set-it-up).
 

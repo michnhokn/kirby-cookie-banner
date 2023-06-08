@@ -33,7 +33,7 @@ function clearAllowedFeatures()
     return \Kirby\Http\Cookie::remove('cookie_status');
 }
 
-function getCookieModalTranslation($key)
+function getCookieBannerTranslation($key)
 {
     if (option('languages')) {
         return t("michnhokn.cookie-banner.$key");
