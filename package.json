@@ -1,17 +1,18 @@
 {
-  "name": "kirby3-cookie-banner",
   "version": "1.0.5",
+  "name": "kirby-cookie-banner",
   "description": "",
-  "author": "Michael Scheurich <contact@michaelscheurich.dev>",
+  "author": "Michael Engel <support@michaelengel.dev>",
   "scripts": {
-    "dev": "parcel watch ./src/cookie-modal.js ./src/cookie-modal.scss --dist-dir ./assets",
-    "build": "parcel build ./src/cookie-modal.js ./src/cookie-modal.scss --dist-dir ./assets --no-source-maps"
+    "dev": "vite",
+    "build": "vite build",
+    "release": "npx -y bumpp --all"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.1.1",
-    "parcel": "^2.1.1"
+    "vite": "^5.0",
+    "sass": "^1.0"
   },
   "dependencies": {
-    "js-cookie": "^2.2.1"
+    "js-cookie": "^3.0"
   }
 }

@@ -1,19 +1,18 @@
 {
-    "name": "michnhokn/kirby3-cookie-banner",
+    "name": "michnhokn/kirby-cookie-banner",
     "description": "Add a cookie modal to your Kirby3 website",
     "type": "kirby-plugin",
     "version": "1.0.9",
     "license": "MIT",
     "authors": [
         {
-            "name": "Michael Scheurich",
-            "email": "support@michaelscheurich.dev"
+            "name": "Michael Engel",
+            "email": "support@michaelengel.dev"
         }
     ],
     "keywords": [
-        "kirby3",
-        "kirby3-cms",
-        "kirby3-plugin",
+        "kirby",
+        "kirby-plugin",
         "cookies",
         "cookie-modal",
         "cookie-banner"

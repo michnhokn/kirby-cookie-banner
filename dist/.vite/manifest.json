@@ -1,0 +1,11 @@
+{
+  "src/cookie-banner.js": {
+    "file": "assets/cookie-banner-DSt9AXzp.js",
+    "name": "cookie-banner",
+    "src": "src/cookie-banner.js",
+    "isEntry": true,
+    "css": [
+      "assets/cookie-banner-DGJAdqxF.css"
+    ]
+  }
+}

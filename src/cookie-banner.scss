@@ -13,16 +13,17 @@
   }
 
   &__content {
-    max-width: 600px;
-    padding: 20px;
+    max-width: clamp(400px, 70dvw, 800px);
+    padding: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
     background-color: #FFFFFF;
-    margin: 15vh auto 0 auto;
+    margin: 16vh auto 0 auto;
     pointer-events: auto;
+    border-radius: 8px;
 
     @media (min-width: 400px) {
       margin: 22vh auto 0 auto;
-      padding: 40px;
+      padding: 32px;
     }
   }
 
@@ -43,31 +44,29 @@
   }
 
   &__options {
-    margin-bottom: 20px;
-    display: flex;
+    margin-bottom: 64px;
+    display: grid;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    gap: 16px;
+    grid-template-columns: 1fr;
 
-    > * {
-      width: calc(50% - 30px);
+    @media (min-width: 400px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
-      @media (min-width: 400px) {
-        width: calc(33.3333% - 30px);
-      }
+    @media (min-width: 900px) {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
   &__option {
+    width: 100%;
     display: inline-flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     position: relative;
     cursor: pointer;
-    margin-right: 30px;
-    margin-bottom: 10px;
 
     &.disabled {
       opacity: .7;
@@ -81,11 +80,10 @@
     display: block;
     width: 20px;
     height: 20px;
-    border-radius: 0;
     border: 2px solid #000000;
-    margin: 0;
-    margin-right: 6px;
+    margin: 0 6px 0 0;
     flex-shrink: 0;
+    border-radius: 4px;
 
     &:checked {
       background-color: #000000;
@@ -137,6 +135,7 @@
     border: 2px solid #000000;
     text-decoration: none;
     color: #000000;
+    border-radius: 4px;
 
     @media (min-width: 400px) {
       margin-right: 10px;

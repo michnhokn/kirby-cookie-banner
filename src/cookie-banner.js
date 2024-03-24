@@ -1,4 +1,4 @@
-import './cookie-modal.scss';
+import './cookie-banner.scss';
 import Cookies from 'js-cookie';
 
 function element(selector) {
@@ -20,7 +20,7 @@ function triggerEvent(eventName, data = {}) {
   document.querySelector('body').dispatchEvent(customEvent);
 }
 
-class CookieModal {
+class CookieBanner {
   constructor() {
     this.$COOKIE_MODAL = element('#cookie-modal');
     this.$FEATURES = allElements('.cookie-modal__checkbox');
@@ -44,6 +44,8 @@ class CookieModal {
       _this.loadCustomFeatures();
       if (_this.CUSTOM_FEATURES.length === 0 && this.SHOW_ON_FIRST) {
         _this.openCookieModal();
+      } else if (_this.CUSTOM_FEATURES.length !== 0) {
+        triggerEvent('cookies:loaded', _this.CUSTOM_FEATURES);
       }
       resolve();
     });
@@ -113,6 +115,9 @@ class CookieModal {
   save(features) {
     const _this = this;
     event.preventDefault();
+    if (!features.length) {
+      features = _this.MINUMUM_FEATURES;
+    }
     triggerEvent('cookies:saved', features);
     _this.setCookie(features);
     _this.CUSTOM_FEATURES = features;
@@ -133,7 +138,8 @@ class CookieModal {
   }
 
   setCookie(features) {
-    Cookies.set('cookie_status', features.join(','), {expires: 365, sameSite: 'lax'});
+    Cookies.set('cookie_status', features.join(','),
+      {expires: 365, sameSite: 'lax'});
   }
 
   closeCookieModal() {
@@ -149,4 +155,6 @@ class CookieModal {
   }
 }
 
-document.addEventListener('DOMContentLoaded', _ => new CookieModal());
+document.addEventListener('DOMContentLoaded', () => {
+  window.cookieBanner = new CookieBanner();
+});
