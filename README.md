@@ -66,7 +66,7 @@ return [
 
 ```` php
 <?php snippet('cookie-modal', [
-    // Loads the custom assets of the plugin. Default: true
+    // Loads the custom assets of the plugin. Default: false
     'assets' => false,
     // Displays the consent modal on initial load. Default: true
     'showOnFirst' => false,
@@ -163,6 +163,10 @@ return [
 > [!NOTE]
 > This plugin is provided free of charge & published under the permissive MIT License. If you use it in a commercial
 > project, please consider to [buy me a beer 🍺](https://buymeacoff.ee/michnhokn)
+
+## Compatability
+Starting with version `1.1.0` of this plugin, it is only compatible with Kirby 4.
+If you need to install this plugin for a Kirby 3 instance, please use version `1.0.9`.
 
 ## License
 
