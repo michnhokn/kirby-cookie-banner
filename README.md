@@ -66,7 +66,7 @@ return [
 
 ```` php
 <?php snippet('cookie-modal', [
-    // Loads the custom assets of the plugin. Default: true
+    // Loads the custom assets of the plugin. Default: false
     'assets' => false,
     // Displays the consent modal on initial load. Default: true
     'showOnFirst' => false,

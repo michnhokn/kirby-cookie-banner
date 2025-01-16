@@ -3,21 +3,19 @@
 namespace Michnhokn;
 
 use Kirby\Cms\Plugin;
-use Kirby\Cms\PluginAsset;
-use Kirby\Cms\PluginAssets;
 use Kirby\Data\Json;
-use Kirby\Exception\Exception;
 use Kirby\Exception\NotFoundException;
 use Kirby\Http\Cookie;
 use Kirby\Toolkit\A;
 
 class CookieBanner
 {
-    public const COOKIE_NAME = 'cookie_status';
+    public const string COOKIE_NAME = 'cookie_status';
 
     private static function getCookie(): ?string
     {
-        $cookie = Cookie::get(self::COOKIE_NAME);
+        kirby()->response()->usesCookie(self::COOKIE_NAME);
+        $cookie = $_COOKIE[self::COOKIE_NAME] ?? null;
         if (!is_string($cookie) or empty($cookie)) {
             return null;
         }
@@ -26,10 +24,7 @@ class CookieBanner
 
     public static function isFeatureAllowed(string $featureName): bool
     {
-        if (($cookie = self::getCookie()) === null) {
-            return false;
-        }
-        return str_contains($featureName, $cookie);
+        return in_array($featureName, self::allowedFeatures());
     }
 
     public static function allowedFeatures(): array
@@ -41,7 +36,7 @@ class CookieBanner
         return array_values(
             array_unique(
                 array_filter(
-                    explode(',', $cookie)
+                    array_map('trim', explode(',', $cookie))
                 )
             )
         );
