@@ -164,6 +164,10 @@ return [
 > This plugin is provided free of charge & published under the permissive MIT License. If you use it in a commercial
 > project, please consider to [buy me a beer 🍺](https://buymeacoff.ee/michnhokn)
 
+## Compatability
+Starting with version `1.1.0` of this plugin, it is only compatible with Kirby 4.
+If you need to install this plugin for a Kirby 3 instance, please use version `1.0.9`.
+
 ## License
 
 [MIT](./LICENSE) License © 2020-PRESENT [Michael Engel](https://github.com/michnhokn)
