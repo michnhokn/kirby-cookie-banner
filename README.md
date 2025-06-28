@@ -1,3 +1,6 @@
+> [!WARNING]  
+> Heads up! This plugin is no longer supported or maintained. Please find a suitable alternative here: https://plugins.getkirby.com/zephir/cookieconsent
+
 ![Kirby Cookie Banner](./.github/kirby-cookie-banner.png)
 
 # Kirby Cookie Banner
